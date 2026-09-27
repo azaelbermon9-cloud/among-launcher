@@ -1,0 +1,18 @@
+{
+  "overview": "Un launcher web con estética espacial para abrir Among Us y otras apps desde una cuadrícula.",
+  "features": [
+    "Cuadrícula de apps con Among Us destacado",
+    "Pantalla de lanzamiento con animación y enlace amongus://",
+    "Búsqueda y filtro por categorías",
+    "Favoritos y apps recientes que persisten",
+    "Vista de detalle de cada app"
+  ],
+  "category": "launcher",
+  "tags": [
+    "launcher",
+    "games",
+    "among-us",
+    "utility"
+  ],
+  "last_updated": "2026-09-27T22:06:41.699Z"
+}

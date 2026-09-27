@@ -1,0 +1,236 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+  font-family: "Space Grotesk";
+  src: url("/assets/fonts/SpaceGrotesk.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "DM Sans";
+  src: url("/assets/fonts/DMSans.woff2") format("woff2");
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Geist Mono";
+  src: url("/assets/fonts/GeistMono.woff2") format("woff2");
+  font-display: swap;
+}
+
+@layer base {
+  :root {
+    --font-display: "Space Grotesk", sans-serif;
+    --font-body: "DM Sans", sans-serif;
+    --font-mono: "Geist Mono", monospace;
+    --radius: 0.875rem;
+
+    /* Kratos launch — deep space, dark-only system */
+    --background: 0.145 0.028 268;
+    --foreground: 0.95 0.012 265;
+    --card: 0.19 0.032 268;
+    --card-foreground: 0.95 0.012 265;
+    --popover: 0.21 0.034 268;
+    --popover-foreground: 0.95 0.012 265;
+
+    /* Signal red — Among Us hero action */
+    --primary: 0.62 0.22 22;
+    --primary-foreground: 0.98 0.008 22;
+
+    --secondary: 0.25 0.038 268;
+    --secondary-foreground: 0.88 0.012 265;
+    --muted: 0.24 0.034 268;
+    --muted-foreground: 0.62 0.02 265;
+
+    /* Ion cyan — secondary interactivity */
+    --accent: 0.78 0.14 196;
+    --accent-foreground: 0.145 0.028 196;
+
+    --destructive: 0.58 0.21 25;
+    --destructive-foreground: 0.98 0.008 25;
+    --success: 0.72 0.17 152;
+    --warning: 0.79 0.15 78;
+
+    --border: 0.3 0.035 268;
+    --input: 0.3 0.035 268;
+    --ring: 0.78 0.14 196;
+
+    --chart-1: 0.62 0.22 22;
+    --chart-2: 0.78 0.14 196;
+    --chart-3: 0.79 0.15 78;
+    --chart-4: 0.68 0.19 305;
+    --chart-5: 0.72 0.17 152;
+
+    --sidebar: 0.17 0.03 268;
+    --sidebar-foreground: 0.95 0.012 265;
+    --sidebar-primary: 0.62 0.22 22;
+    --sidebar-primary-foreground: 0.98 0.008 22;
+    --sidebar-accent: 0.25 0.038 268;
+    --sidebar-accent-foreground: 0.88 0.012 265;
+    --sidebar-border: 0.3 0.035 268;
+    --sidebar-ring: 0.78 0.14 196;
+
+    /* Extended tokens */
+    --gradient-primary: linear-gradient(
+      135deg,
+      oklch(0.66 0.22 22),
+      oklch(0.56 0.2 8)
+    );
+    --gradient-subtle: linear-gradient(
+      180deg,
+      oklch(0.21 0.034 268),
+      oklch(0.16 0.028 268)
+    );
+    --gradient-accent: linear-gradient(
+      135deg,
+      oklch(0.82 0.13 196),
+      oklch(0.7 0.15 215)
+    );
+    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --starfield-opacity: 0.5;
+  }
+
+  /* Dark-only design: .dark mirrors :root so class toggling stays safe */
+  .dark {
+    --background: 0.145 0.028 268;
+    --foreground: 0.95 0.012 265;
+    --card: 0.19 0.032 268;
+    --card-foreground: 0.95 0.012 265;
+    --popover: 0.21 0.034 268;
+    --popover-foreground: 0.95 0.012 265;
+
+    --primary: 0.62 0.22 22;
+    --primary-foreground: 0.98 0.008 22;
+
+    --secondary: 0.25 0.038 268;
+    --secondary-foreground: 0.88 0.012 265;
+    --muted: 0.24 0.034 268;
+    --muted-foreground: 0.62 0.02 265;
+
+    --accent: 0.78 0.14 196;
+    --accent-foreground: 0.145 0.028 196;
+
+    --destructive: 0.58 0.21 25;
+    --destructive-foreground: 0.98 0.008 25;
+    --success: 0.72 0.17 152;
+    --warning: 0.79 0.15 78;
+
+    --border: 0.3 0.035 268;
+    --input: 0.3 0.035 268;
+    --ring: 0.78 0.14 196;
+
+    --chart-1: 0.62 0.22 22;
+    --chart-2: 0.78 0.14 196;
+    --chart-3: 0.79 0.15 78;
+    --chart-4: 0.68 0.19 305;
+    --chart-5: 0.72 0.17 152;
+
+    --sidebar: 0.17 0.03 268;
+    --sidebar-foreground: 0.95 0.012 265;
+    --sidebar-primary: 0.62 0.22 22;
+    --sidebar-primary-foreground: 0.98 0.008 22;
+    --sidebar-accent: 0.25 0.038 268;
+    --sidebar-accent-foreground: 0.88 0.012 265;
+    --sidebar-border: 0.3 0.035 268;
+    --sidebar-ring: 0.78 0.14 196;
+  }
+
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+    background-image: radial-gradient(
+        circle at 18% 12%,
+        oklch(0.62 0.22 22 / 0.07),
+        transparent 42%
+      ),
+      radial-gradient(
+        circle at 82% 78%,
+        oklch(0.78 0.14 196 / 0.06),
+        transparent 46%
+      );
+    background-attachment: fixed;
+  }
+}
+
+@layer utilities {
+  .transition-smooth {
+    transition: var(--transition-smooth);
+  }
+
+  .bg-gradient-primary {
+    background-image: var(--gradient-primary);
+  }
+
+  .bg-gradient-subtle {
+    background-image: var(--gradient-subtle);
+  }
+
+  .bg-gradient-accent {
+    background-image: var(--gradient-accent);
+  }
+
+  .text-gradient-primary {
+    background-image: var(--gradient-primary);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+
+  /* Starfield atmosphere — layered radial dots, no image asset */
+  .bg-starfield {
+    background-image: radial-gradient(
+        1px 1px at 20% 30%,
+        oklch(0.95 0.01 265 / 0.55),
+        transparent
+      ),
+      radial-gradient(
+        1px 1px at 68% 18%,
+        oklch(0.95 0.01 265 / 0.4),
+        transparent
+      ),
+      radial-gradient(
+        1.5px 1.5px at 42% 72%,
+        oklch(0.95 0.01 265 / 0.45),
+        transparent
+      ),
+      radial-gradient(
+        1px 1px at 86% 58%,
+        oklch(0.95 0.01 265 / 0.35),
+        transparent
+      ),
+      radial-gradient(
+        1px 1px at 12% 84%,
+        oklch(0.95 0.01 265 / 0.4),
+        transparent
+      ),
+      radial-gradient(
+        1px 1px at 55% 45%,
+        oklch(0.95 0.01 265 / 0.3),
+        transparent
+      );
+    background-size: 420px 420px;
+  }
+
+  .shadow-elevated {
+    box-shadow: 0 18px 40px -18px oklch(0.08 0.02 268 / 0.85), 0 2px 8px -4px
+      oklch(0.08 0.02 268 / 0.6);
+  }
+
+  .shadow-subtle {
+    box-shadow: 0 1px 2px 0 oklch(0.08 0.02 268 / 0.4);
+  }
+
+  .shadow-hero {
+    box-shadow: 0 26px 60px -24px oklch(0.62 0.22 22 / 0.5), 0 4px 14px -6px
+      oklch(0.08 0.02 268 / 0.7);
+  }
+
+  .ring-orbit {
+    box-shadow: 0 0 0 1px oklch(0.62 0.22 22 / 0.35), inset 0 0 0 1px
+      oklch(0.62 0.22 22 / 0.12);
+  }
+}
